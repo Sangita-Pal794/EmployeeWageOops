@@ -32,5 +32,30 @@ case $empcheck in
 		;;
 esac
 salaryperday=$(($emphrs*empwageperhr))
-echo $salaryperday		
+echo $salaryperday
+hrsperday=0
+hrs=0
+totalsalary=0		
      
+for(( i=1; i<=20; i++ ))
+do
+	randomCheck=$((RANDOM%2))
+if [ $isPresent -eq $randomCheck ]
+	then
+        echo "Employee is Present"
+else
+        echo "Employee is not Present"
+fi
+hrsperday=$(($isPresent*$emphrs))
+hours=$(($hours+$hrsperday))
+done
+echo $hours
+
+if [ $hours -ge 100 ]
+then
+	b=$(($hours*empwageperhour))
+	echo $b
+else
+	echo "less than 100 hrs"
+fi
+
