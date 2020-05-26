@@ -21,17 +21,18 @@ else
 fi
 
 case $empcheck in
-	$isfulltime)
-		emphrs=8;
-		;;
+	$isfulltime)	
+	emphrs=8;
+	salaryperday=$(($emphrs*empwageperhr))
+	;;
 	$isparttime)
-		emphrs=4
-		;;
+	emphrs=4
+	salaryperday=$(($emphrs*empwageperhr))
+	;;
 	*)
-		emphrs=0
-		;;
+	emphrs=0
+	;;
 esac
-salaryperday=$(($emphrs*empwageperhr))
 echo $salaryperday
 hrsperday=0
 hrs=0
@@ -49,13 +50,13 @@ fi
 hrsperday=$(($isPresent*$emphrs))
 hours=$(($hours+$hrsperday))
 done
-echo $hours
+echo "totalhours:$hours"
 
-if [ $hours -ge 100 ]
-then
-	b=$(($hours*empwageperhour))
-	echo $b
-else
-	echo "less than 100 hrs"
-fi
+#if [ $hours -ge 100 ]
+#then
+#	b=$(($hours*empwageperhour))
+#	echo $b
+#else
+#	echo "less than 100 hrs"
+#fi
 
